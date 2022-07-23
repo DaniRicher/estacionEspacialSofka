@@ -1,11 +1,3 @@
-export interface _Nave {
-
-    nombre: string,
-    potencia: string,
-    valocidad: string,
-    peso: number,
-
-}
 
 export class NaveEspacial {
     
@@ -14,13 +6,47 @@ export class NaveEspacial {
 
         private nombre: string,
         private potencia: string,
-        private valocidad: string,
+        private velocidad: string,
         private peso: number,
 
     ) { }
 
-    get getNombre( ){
+
+    explorar() {
+        console.log( 'Estoy explorando' );
+    }
+
+    transportar() {
+        console.log( 'Estoy transportando' );
+    }
+
+    get getNombre() {
         return this.nombre;
+    }
+
+    get getPotencia() {
+        return this.potencia;
+    }
+
+    get getVelocidad() {
+        return this.velocidad;
+    }
+
+    get getPeso() {
+        return this.peso;
+    }
+
+    creandoNave( ) {
+
+        return {
+
+            nombre: this.nombre, 
+            potencia: this.potencia, 
+            velocidad: this.velocidad, 
+            peso: this.peso,
+
+        }
+        
     }
 
     
