@@ -5,21 +5,21 @@ import Swal from "sweetalert2";
 export class NaveLuz extends NaveEspacial {
 
 
-    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string ) { 
+    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string, img: string ) { 
 
-        super( nombre, potencia, velocidad, peso, tipo );
+        super( nombre, potencia, velocidad, peso, tipo, img );
         
     }
 
-   override creandoNave(): any {
+   override creandoNave( nombre: string, potencia:string, velocidad:string, peso:number, tipo:string , img:string  ): any {
 
     const nave = {
 
-        nombre : 'SpaceLight',
-        potencia: '100000Km',
-        velocidad: 'N/A',
-        peso: 2900,
-        tipo: 'Nave de Luz',
+        nombre : nombre,
+        potencia: potencia,
+        velocidad: velocidad,
+        peso: peso,
+        tipo: tipo,
         img: 'https://img.icons8.com/dusk/64/000000/rocket--v1.png'
 
      }
@@ -29,8 +29,8 @@ export class NaveLuz extends NaveEspacial {
     viajarAOtraGalaxia() {
         Swal.fire(
             `Objetivo`,
-            'Estoy viajando a otra galaxia a la velocidad de la luz',
-            'success'
+            'Viajar a otra galaxia a la velocidad de la luz',
+            'info'
           )
    }
 }

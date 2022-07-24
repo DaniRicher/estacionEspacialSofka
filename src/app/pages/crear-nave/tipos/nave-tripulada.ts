@@ -7,22 +7,22 @@ export class NaveTripulada extends NaveEspacial {
     // naveSpacialLanzadera = new NaveEspacial()
     private cantidad: number;
 
-    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string, cantidad: number ) { 
+    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string, cantidad: number, img: string ) { 
 
-        super( nombre, potencia, velocidad, peso, tipo );
+        super( nombre, potencia, velocidad, peso, tipo, img );
         this.cantidad = cantidad;
     }
     
-    override creandoNave(): any {
+    override creandoNave( nombre: string, potencia:string, velocidad:string, peso:number, tipo:string , img:string  ): any {
 
         const nave = {
     
-            nombre : 'Vostok',
-            potencia: '15000Km',
-            peso: 2900,
-            velocidad: 'N/A',
+            nombre : nombre,
+            potencia: potencia,
+            peso: velocidad,
+            velocidad: peso,
             cantidad : 100,
-            tipo: 'Nave Tripulada',
+            tipo: tipo,
             img: 'https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-rocket-advertising-kiranshastry-lineal-color-kiranshastry.png'
 
             
@@ -33,8 +33,8 @@ export class NaveTripulada extends NaveEspacial {
        irALaLuna() {
         Swal.fire(
             `Objetivo`,
-            'Transportando humanos a la luna',
-            'success'
+            'Transportar humanos a la luna',
+            'info'
           )
     }
     

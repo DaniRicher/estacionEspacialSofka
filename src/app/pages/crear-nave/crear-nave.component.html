@@ -4,7 +4,7 @@
         <hr>
 
         <div class="">
-            <form action="" [formGroup]="miFormulario" (ngSubmit)="guardarNave()" autocomplete="off">
+            <form action="" class="col-12" [formGroup]="miFormulario" (ngSubmit)="guardarNave()" autocomplete="off">
 
                 <div>
                     <select class="form-select" aria-label="Default select example" formControlName= "tipo">
@@ -72,29 +72,26 @@
                     <button class="btn btn-danger" (click)="irANaves()"> Ir a mis Naves </button>
                     <button class="btn btn-primary m-2" type="submit" [disabled]="miFormulario.invalid">Guardar</button>
                 </div>
-                  
-                  
     
             </form>
-
-
         </div>
 
     </div>
-
-    <div class="col-6 ">
-
+    <div class="col-6">
         <h2>Imagen</h2>
             <hr>
-
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Imagen de la nave</label>
-            <div class="col-12">
-                <div class="card" style="width: 18rem;">
-                    <img [src]="img" class="card-img-top">
+        <div class="mb-3 ">
+            <label class="form-label">Imagen de la nave</label>
+            <div>
+                <div >
+                    <img *ngIf="miFormulario.controls['tipo'].value === 'Nave de Lanzadera'" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-rocket-achievements-flaticons-flat-flat-icons-2.png">
+                    <img *ngIf="miFormulario.controls['tipo'].value === 'Nave de Luz'" src="https://img.icons8.com/dusk/64/000000/rocket--v1.png">
+                    <img *ngIf="miFormulario.controls['tipo'].value === 'Nave no Tripulada'" src="https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-rocket-project-planing-flatart-icons-lineal-color-flatarticons-1.png">
+                    <img *ngIf="miFormulario.controls['tipo'].value === 'Nave Tripulada'" src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-rocket-advertising-kiranshastry-lineal-color-kiranshastry.png">
                 </div>
             </div>
         </div>
-
     </div>
+
+   
 </div>

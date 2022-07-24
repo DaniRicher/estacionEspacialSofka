@@ -6,20 +6,20 @@ export class NaveNoTripulada extends NaveEspacial {
 
     // naveSpacialLanzadera = new NaveEspacial()
 
-    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string) { 
+    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string, img: string ) { 
 
-        super( nombre, potencia, velocidad, peso, tipo );
+        super( nombre, potencia, velocidad, peso, tipo, img );
     }
 
-    override creandoNave(): any {
+    override creandoNave( nombre: string, potencia:string, velocidad:string, peso:number, tipo:string , img:string  ): any {
 
         const nave = {
     
-            nombre : 'Explorer',
-            potencia: '10000Km',
-            velocidad: '12000Km/h',
-            peso: 1900,
-            tipo: 'Nave no tripulada',
+            nombre : nombre,
+            potencia: potencia,
+            velocidad: velocidad,
+            peso: peso,
+            tipo: tipo,
             img: 'https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/64/000000/external-rocket-project-planing-flatart-icons-lineal-color-flatarticons-1.png'
 
             
@@ -30,8 +30,8 @@ export class NaveNoTripulada extends NaveEspacial {
     mandarInformacion() {
         Swal.fire(
             `Objetivo`,
-            'Estoy enviando información a la tierra',
-            'success'
+            'Enviar información a la tierra',
+            'info'
           )
     }
     

@@ -6,6 +6,5 @@ export interface Nave {
     velocidad: string, 
     peso: number, 
     tipo: string,
-    tarea: string,
     img?: string
 }

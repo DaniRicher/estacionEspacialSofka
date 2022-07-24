@@ -16,7 +16,7 @@
             <th>Velocidad</th>
             <th>Peso</th>
             <th>Proposito</th>
-            <th>Elimar Nave</th>
+            <!-- <th>Elimar Nave</th> -->
           </tr>
         </thead>
         <tbody>
@@ -25,11 +25,11 @@
             <td> <img src="{{naves.img}}" /></td>
             <td>{{ naves.nombre }}</td>
             <td>{{ naves.tipo }}</td>
-            <td>{{ naves.potencia }} </td>
-            <td>{{ naves.velocidad }}</td>
-            <td>{{ naves.peso }}</td>
+            <td>{{ naves.potencia }} HP </td>
+            <td>{{ naves.velocidad }} Km/s</td>
+            <td>{{ naves.peso }} Kg</td>
             <td><button class="btn btn-primary" (click)="verAcciones( i )">Ver Proposito</button></td>
-            <td><button class="btn btn-danger" (click)="eliminarNave( i )"> Eliminar Nave</button></td>
+            <!-- <td><button class="btn btn-danger" (click)="eliminarNave( i )"> Eliminar Nave</button></td> -->
 
           </tr>
           

@@ -8,7 +8,8 @@ export class NaveEspacial {
         private potencia: string,
         private velocidad: string,
         private peso: number,
-        private tipo: string
+        private tipo: string,
+        private img?: string,
 
     ) { }
 
@@ -41,15 +42,16 @@ export class NaveEspacial {
         return this.tipo;
     }
 
-    public creandoNave() {
+    public creandoNave( nombre: string, potencia:string, velocidad:string, peso:number, tipo:string , img:string ) {
 
         return {
 
-            nombre: this.nombre, 
-            potencia: this.potencia, 
-            velocidad: this.velocidad, 
-            peso: this.peso,
-            tipo: this.tipo
+            nombre: nombre, 
+            potencia: potencia, 
+            velocidad: velocidad, 
+            peso: peso,
+            tipo: tipo,
+            img: img
 
         }
         

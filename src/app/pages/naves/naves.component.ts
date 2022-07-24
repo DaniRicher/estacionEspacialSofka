@@ -14,45 +14,49 @@ import { Router } from '@angular/router';
 export class NavesComponent implements OnInit {
 
   public navesPorDefecto: Nave[] = [];
+  public naves: any[] = [];
 
 
-  public nave:NaveLanzadera = new NaveLanzadera('', '', '', 0, '');
-  public naveLuz:NaveLuz = new NaveLuz('', '', '', 0, '');
-  public naveNoTripulada:NaveNoTripulada = new NaveNoTripulada('', '', '', 0, '');
-  public naveTripulada:NaveTripulada = new NaveTripulada('', '', '', 0, '', 0);
+  public nave:NaveLanzadera = new NaveLanzadera('', '', '', 0, '', '');
+  public naveLuz:NaveLuz = new NaveLuz('', '', '', 0, '', '');
+  public naveNoTripulada:NaveNoTripulada = new NaveNoTripulada('', '', '', 0, '', '');
+  public naveTripulada:NaveTripulada = new NaveTripulada('', '', '', 0, '', 0 , '');
 
   constructor( private router: Router ) { }
 
   ngOnInit(): void {
     
-
-    
-    this.navesPorDefecto.push( this.nave.creandoNave() );
-    this.navesPorDefecto.push( this.naveLuz.creandoNave() );
-    this.navesPorDefecto.push( this.naveNoTripulada.creandoNave() );
-    this.navesPorDefecto.push( this.naveTripulada.creandoNave() );
+    this.navesPorDefecto.push( this.nave.creandoNave( 'Saturno V', '10000', '5000', 30000, 'Nave de Lanzadera', '') );
+    this.navesPorDefecto.push( this.nave.creandoNave( 'Atlas V', '10000', '58000', 546700, 'Nave de Lanzadera', '') );
+    this.navesPorDefecto.push( this.nave.creandoNave( 'Delta IV', '110000', '46000', 733400, 'Nave de Lanzadera', '') );
+    this.navesPorDefecto.push( this.naveLuz.creandoNave( 'SpaceLight I', '100000', '80000', 385000, 'Nave de Luz', '' ) );
+    this.navesPorDefecto.push( this.naveLuz.creandoNave( 'Here!', '300000', '299792', 80000, 'Nave de Luz', '' ) );
+    this.navesPorDefecto.push( this.naveLuz.creandoNave( 'Space II', '76000', '299792', 50000, 'Nave de Luz', '' ) );
+    this.navesPorDefecto.push( this.naveNoTripulada.creandoNave( 'Soho V', '900', '500', 9525, 'Nave no Tripulada', '' ) );
+    this.navesPorDefecto.push( this.naveNoTripulada.creandoNave( 'Explorer', '10000', '30000', 475000, 'Nave no Tripulada', '' ) );
+    this.navesPorDefecto.push( this.naveNoTripulada.creandoNave( 'Mariner IV', '60000', '98500', 60000, 'Nave no Tripulada', '' ) );
+    this.navesPorDefecto.push( this.naveTripulada.creandoNave( 'Dragon V2', '9000', '500', 9250, 'Nave Tripulada', '' ) );
     
     this.cargarLocalStorage();
-    // console.log(this.navesPorDefecto);
   }
 
   cargarLocalStorage() {
 
-    let naves: Nave[] = [];
+    this.naves = [];
     
 
-    naves.push(JSON.parse(localStorage.getItem( 'Nave de Lanzadera' ) ! ));
-    naves.push(JSON.parse(localStorage.getItem( 'Nave de Luz' ) ! ));
-    naves.push(JSON.parse(localStorage.getItem( 'Nave no Tripulada' )!));
-    naves.push(JSON.parse(localStorage.getItem( 'Nave Tripulada' )! ));
+    this.naves.push(JSON.parse(localStorage.getItem( 'Nave de Lanzadera' ) ! ));
+    this.naves.push(JSON.parse(localStorage.getItem( 'Nave de Luz' ) ! ));
+    this.naves.push(JSON.parse(localStorage.getItem( 'Nave no Tripulada' )!));
+    this.naves.push(JSON.parse(localStorage.getItem( 'Nave Tripulada' )! ));
 
 
-    const navesExistentes:any[] = naves.filter( el => el !=null );
+    const navesExistentes:any[] = this.naves.filter( el => el !=null );
 
-   navesExistentes.find( elem => {
+    navesExistentes.find( elem => {
       elem.forEach( (data:any) => {
       this.navesPorDefecto.push(data)
-      })
+      });
    });
 
   }
@@ -61,23 +65,23 @@ export class NavesComponent implements OnInit {
 
     switch ( this.navesPorDefecto[index].tipo ) {
 
-      case this.nave.creandoNave().tipo: {
+      case 'Nave de Lanzadera': {
         this.nave.transportarSatelite();
         break;
       }
 
-      case this.naveLuz.creandoNave().tipo:{
+      case 'Nave de Luz':{
         this.naveLuz.viajarAOtraGalaxia();
         break;
       }
         
 
-      case this.naveNoTripulada.creandoNave().tipo: {
+      case 'Nave no Tripulada': {
         this.naveNoTripulada.mandarInformacion();
         break;
       }
 
-      case this.naveTripulada.creandoNave().tipo: {
+      case 'Nave Tripulada': {
         this.naveTripulada.irALaLuna();
         break;
       }
@@ -92,6 +96,11 @@ export class NavesComponent implements OnInit {
     this.router.navigateByUrl('estacionSofka/crear-nave')
   }
   eliminarNave( index: number ) {
+
+    
+
+    // this.navesPorDefecto.splice(index, 1)
+    // console.log(this.navesPorDefecto);
 
   }
 
