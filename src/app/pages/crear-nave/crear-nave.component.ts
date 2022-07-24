@@ -71,7 +71,6 @@ export class CrearNaveComponent implements OnInit {
 
   guardarNave() {
 
-    
     if( this.miFormulario.invalid ){
       
       this.miFormulario.markAllAsTouched();
@@ -94,7 +93,7 @@ export class CrearNaveComponent implements OnInit {
           this.cargarLocalSorage( this.tipo );
           this.naves.push( naveLanzadera );
           this.guardarLocalStorage(this.tipo, this.naves);
-          
+
           break;
         }
         case 'Nave de Luz':{

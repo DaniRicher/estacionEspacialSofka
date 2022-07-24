@@ -11,11 +11,11 @@ const routes: Routes = [
     component: MainComponent,
     children:[
       {
-        path: '',
+        path: 'crear-nave',
         component: CrearNaveComponent
       },
       {
-        path: 'naves',
+        path: '',
         component: NavesComponent
       },
       
