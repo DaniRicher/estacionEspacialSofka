@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NavesComponent } from './naves/naves.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { CrearNaveComponent } from './crear-nave/crear-nave.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +19,7 @@ import { CrearNaveComponent } from './crear-nave/crear-nave.component';
     CommonModule,
     PagesRoutingModule,
     SharedModule,
+    ReactiveFormsModule
   ],
   exports: [
     MainComponent,

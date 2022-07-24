@@ -5,23 +5,27 @@ export class NaveNoTripulada extends NaveEspacial {
 
     // naveSpacialLanzadera = new NaveEspacial()
 
-    constructor( nombre: string, potencia: string, velocidad: string, peso: number) { 
+    constructor( nombre: string, potencia: string, velocidad: string, peso: number, tipo: string) { 
 
-        super( nombre, potencia, velocidad, peso );
+        super( nombre, potencia, velocidad, peso, tipo );
     }
 
     override creandoNave(): any {
 
         const nave = {
     
-            nombre : 'Saturno V',
-            potencia: '32000Km',
+            nombre : 'Explorer',
+            potencia: '10000Km',
             velocidad: '12000Km/h',
-            peso: 2900,
-            tarea: 'Limpiar la Estación Espacial Internacional'
+            peso: 1900,
+            tarea: 'Abasteciendo y limpiando la Estación Espacial Internacional'
             
          }
            return  nave;
        }
+    
+    mandarInformacion() {
+        console.log('Estoy enviando información a la tierra');
+    }
     
 }

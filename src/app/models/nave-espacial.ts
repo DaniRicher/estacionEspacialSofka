@@ -8,6 +8,7 @@ export class NaveEspacial {
         private potencia: string,
         private velocidad: string,
         private peso: number,
+        private tipo: string
 
     ) { }
 
@@ -16,8 +17,8 @@ export class NaveEspacial {
         console.log( 'Estoy explorando' );
     }
 
-    transportar() {
-        console.log( 'Estoy transportando' );
+    despegar() {
+        console.log( 'Estoy despegando' );
     }
 
     get getNombre() {
@@ -36,7 +37,11 @@ export class NaveEspacial {
         return this.peso;
     }
 
-    creandoNave( ) {
+    get getTipo() {
+        return this.tipo;
+    }
+
+    creandoNave() {
 
         return {
 

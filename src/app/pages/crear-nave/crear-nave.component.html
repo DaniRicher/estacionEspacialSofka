@@ -1,6 +1,96 @@
 <div class="row m10">
-    <div class="col">
+    <div class="col-6">
         <h2>Crear naves</h2>
-        <hr>    
+        <hr>
+
+        <div class="">
+            <form action="" [formGroup]="miFormulario" (ngSubmit)="guardarNave()" autocomplete="off">
+
+                <div>
+                    <select class="form-select" aria-label="Default select example" formControlName= "tipo">
+                        <label  class="form-label">Tipo de la nave</label>
+                        <option value=""> Seleccione el tipo de la nave</option>
+                        <option  *ngFor="let item of tipos"> {{item}} </option>
+                    </select>
+                    <span class="text-danger" *ngIf="validarCampos( 'tipo' )"> El tipo es obligatorio </span>
+                </div>
+                
+                
+    
+                <div class="mb-3">
+                    <label class="form-label">Nombre de la nave</label>
+                    <input type="text" class="form-control"
+                           placeholder="Ingrese el nombre de la nave" 
+                           formControlName="nombre">
+
+                    <span class="text-danger" *ngIf="validarCampos( 'nombre' )"> El nombre de la nave es obligatorio </span>
+
+                </div>
+    
+                <div class="mb-3">
+                    <label class="form-label">Potencia de la nave</label>
+                    <input type="text" class="form-control"
+                           placeholder="Ingrese la potencia de la nave"
+                           formControlName="potencia">
+
+                    <span class="text-danger" *ngIf="validarCampos( 'potencia' )"> La potencia de la nave es obligatorio </span>
+
+                </div>
+
+                
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Velocidad de la nave</label>
+                    <input type="text" class="form-control"
+                           placeholder="Ingrese la velocidad de la nave"
+                           formControlName="velocidad">
+
+                    <span class="text-danger" *ngIf="validarCampos( 'velocidad' )"> La Velocidad de la nave es obligatorio </span>
+
+                </div>
+        
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Peso de la nave</label>
+                    <input type="number" class="form-control"
+                           placeholder="Ingrese el peso de la nave"
+                           formControlName="peso">
+
+                    <span class="text-danger" *ngIf="validarCampos( 'peso' )"> El peso de la nave es obligatorio </span>
+
+                </div>
+
+                <div class="mb-3" *ngIf="miFormulario.controls['tipo'].value === 'Nave Tripulada'">
+                    <label for="exampleFormControlInput1" class="form-label">Cantidad de Personas</label>
+                    <input type="number" class="form-control"
+                           placeholder="Ingrese la cantidad de personas que van en la nave" 
+                           formControlName="cantidad">
+
+                    <span class="text-danger" *ngIf="validarCampos( 'cantidad' )"> La cantidad de personas de la nave es obligatorio </span>
+
+                </div>
+    
+                  <div class="text-end" >
+                    <button class="btn btn-primary " type="submit" [disabled]="miFormulario.invalid">Guardar</button>
+                  </div>
+    
+            </form>
+
+
+        </div>
+
+    </div>
+
+    <div class="col-6 ">
+
+        <h2>Imagen</h2>
+            <hr>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Imagen de la nave</label>
+            <div class="col-12">
+                <!-- <img class="img" src="https://www.telemundo.com/sites/nbcutelemundo/files/styles/fit-1240w/public/images/article/cover/2016/09/08/nave-espacial-despegando.jpg?ramen_itok=iqwQftIcTf" alt=""> -->
+            </div>
+            <label for="">Ingrese el link de la imagen</label>
+        </div>
+
     </div>
 </div>
