@@ -18,7 +18,9 @@ export class NaveLuz extends NaveEspacial {
         potencia: '100000Km',
         velocidad: 'N/A',
         peso: 2900,
-        tarea: 'Viajar entre galaxias'
+        tarea: 'Viajar entre galaxias',
+        tipo: 'Nave de Luz'
+
      }
        return  nave;
    }

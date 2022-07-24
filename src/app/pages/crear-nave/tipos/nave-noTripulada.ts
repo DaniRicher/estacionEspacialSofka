@@ -18,7 +18,9 @@ export class NaveNoTripulada extends NaveEspacial {
             potencia: '10000Km',
             velocidad: '12000Km/h',
             peso: 1900,
-            tarea: 'Abasteciendo y limpiando la Estación Espacial Internacional'
+            tarea: 'Abasteciendo y limpiando la Estación Espacial Internacional',
+            tipo: 'Nave no tripulada'
+
             
          }
            return  nave;

@@ -49,6 +49,7 @@ export class NaveEspacial {
             potencia: this.potencia, 
             velocidad: this.velocidad, 
             peso: this.peso,
+            tipo: this.tipo
 
         }
         

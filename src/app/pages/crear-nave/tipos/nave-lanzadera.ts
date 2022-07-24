@@ -18,7 +18,8 @@ export class NaveLanzadera extends NaveEspacial {
         potencia: '32000Km',
         velocidad: 'N/A',
         peso: 2900,
-        tarea: 'Llevar suministros'
+        tarea: 'Llevar suministros',
+        tipo: 'Nave de Lanzadera'
      }
        return nave;
    }
