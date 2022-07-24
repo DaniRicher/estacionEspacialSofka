@@ -20,8 +20,7 @@ export class NaveLanzadera extends NaveEspacial {
         peso: 2900,
         tarea: 'Llevar suministros'
      }
-
-       return  nave;
+       return nave;
    }
 
    transportarSatelite() {

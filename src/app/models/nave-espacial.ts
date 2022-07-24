@@ -41,7 +41,7 @@ export class NaveEspacial {
         return this.tipo;
     }
 
-    creandoNave() {
+    public creandoNave() {
 
         return {
 

@@ -10,10 +10,14 @@ import { NaveLanzadera } from '../crear-nave/tipos/nave-lanzadera';
 })
 export class NavesComponent implements OnInit {
 
+  public nave:NaveLanzadera = new NaveLanzadera('', '', '', 0, '');
+
   constructor() { }
 
   ngOnInit(): void {
-    
+
+    console.log(this.nave.creandoNave());
+
   }
 
 }

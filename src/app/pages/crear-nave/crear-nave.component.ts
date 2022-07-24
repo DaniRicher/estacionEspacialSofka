@@ -48,8 +48,25 @@ export class CrearNaveComponent implements OnInit {
       
     });
 
-    this.navesGuardadas = JSON.parse(localStorage.getItem('Naves de Lanzadera')!);
-    this.naves = this.navesGuardadas;
+    // if( localStorage.getItem( 'Nave de Lanzadera' )) {
+    //   this.navesGuardadas = JSON.parse(localStorage.getItem('Nave de Lanzadera')!);
+    //   this.naves = this.navesGuardadas;
+    // }
+    
+    
+  }
+
+  guardarLocalStorage( tipo: string, naves: any) {
+    localStorage.setItem( tipo , JSON.stringify( naves ) );
+  }
+  cargarLocalSorage( tipo:string ) {
+
+    this.naves = [];
+    if( localStorage.getItem( tipo )) {
+      this.naves = JSON.parse(localStorage.getItem( tipo )!);
+      //  = this.navesGuardadas;
+    }
+
   }
 
   guardarNave() {
@@ -58,7 +75,7 @@ export class CrearNaveComponent implements OnInit {
     if( this.miFormulario.invalid ){
       
       this.miFormulario.markAllAsTouched();
-      console.log('formulario no valido');
+      Swal.fire('Error', 'Ha ocurrido un error', 'error');
 
     } else {
 
@@ -69,31 +86,48 @@ export class CrearNaveComponent implements OnInit {
       this.tipo = this.miFormulario.get('tipo')?.value;
       this.cantidad = this.miFormulario.get('cantidad')?.value;
 
-      if( this.tipo === 'Nave de Lanzadera' ) {
+      switch ( this.tipo ) {
 
-        const naveLanzadera = new NaveLanzadera( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo );
-        // this.naves.push(naveLanzadera);
+        case 'Nave de Lanzadera':{
 
-        localStorage.setItem('Naves de Lanzadera', JSON.stringify(naveLanzadera));
-        // console.log(this.naves);
+          const naveLanzadera = new NaveLanzadera( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo );
+          this.cargarLocalSorage( this.tipo );
+          this.naves.push( naveLanzadera );
+          this.guardarLocalStorage(this.tipo, this.naves);
+          
+          break;
+        }
+        case 'Nave de Luz':{
 
-      } else if( this.tipo === 'Nave de Luz' ) {
+          const naveDeLuz = new NaveLuz( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo );
+          this.cargarLocalSorage( this.tipo );
+          this.naves.push( naveDeLuz );
+          this.guardarLocalStorage( this.tipo, this.naves );
 
-        const naveDeLuz = new NaveLuz( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo );
-        console.log(naveDeLuz);
+          break;
+        }
+        case 'Nave no Tripulada':{
 
-      } else if( this.tipo === 'Nave no Tripulada' ) {
+          const naveNoTripulada = new NaveNoTripulada( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo );
+          this.cargarLocalSorage( this.tipo );
+          this.naves.push( naveNoTripulada );
+          this.guardarLocalStorage( this.tipo, this.naves );
 
-        const naveNoTripulada = new NaveNoTripulada( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo );
-        console.log(naveNoTripulada);
+          break;
+        }
+        case 'Nave Tripulada':{
 
-      } else if( this.tipo === 'Nave Tripulada' ) {
+          const naveTripulada = new NaveTripulada( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo, this.cantidad );
+          this.cargarLocalSorage( this.tipo );
+          this.naves.push( naveTripulada );
+          this.guardarLocalStorage( this.tipo, this.naves );
 
-        const naveTripulada = new NaveTripulada( this.nombre, this.potencia, this.velocidad, this.peso, this.tipo, this.cantidad );
-        console.log(naveTripulada);
-
-      } else {
-        console.log('Ha ocurrido un error');
+          break;
+        }
+      
+        default:
+          console.log('Ha ocurrido un error');
+          break;
       }
 
       this.miFormulario.reset();
