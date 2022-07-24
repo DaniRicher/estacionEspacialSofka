@@ -68,9 +68,12 @@
 
                 </div>
     
-                  <div class="text-end" >
-                    <button class="btn btn-primary " type="submit" [disabled]="miFormulario.invalid">Guardar</button>
-                  </div>
+                <div class="">
+                    <button class="btn btn-danger" (click)="irANaves()"> Ir a mis Naves </button>
+                    <button class="btn btn-primary m-2" type="submit" [disabled]="miFormulario.invalid">Guardar</button>
+                </div>
+                  
+                  
     
             </form>
 
@@ -87,9 +90,10 @@
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Imagen de la nave</label>
             <div class="col-12">
-                <!-- <img class="img" src="https://www.telemundo.com/sites/nbcutelemundo/files/styles/fit-1240w/public/images/article/cover/2016/09/08/nave-espacial-despegando.jpg?ramen_itok=iqwQftIcTf" alt=""> -->
+                <div class="card" style="width: 18rem;">
+                    <img [src]="img" class="card-img-top">
+                </div>
             </div>
-            <label for="">Ingrese el link de la imagen</label>
         </div>
 
     </div>

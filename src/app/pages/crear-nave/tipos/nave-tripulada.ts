@@ -1,4 +1,5 @@
 import { NaveEspacial } from "src/app/models/nave-espacial";
+import Swal from "sweetalert2";
 
 
 export class NaveTripulada extends NaveEspacial {
@@ -20,9 +21,9 @@ export class NaveTripulada extends NaveEspacial {
             potencia: '15000Km',
             peso: 2900,
             velocidad: 'N/A',
-            tarea: 'Llevar seres humanos para el mantenimiento',
             cantidad : 100,
-            tipo: 'Nave Tripulada'
+            tipo: 'Nave Tripulada',
+            img: 'https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/000000/external-rocket-advertising-kiranshastry-lineal-color-kiranshastry.png'
 
             
          }
@@ -30,7 +31,11 @@ export class NaveTripulada extends NaveEspacial {
        }
 
        irALaLuna() {
-        console.log('Transportando humanos a la luna');
+        Swal.fire(
+            `Objetivo`,
+            'Transportando humanos a la luna',
+            'success'
+          )
     }
     
 }

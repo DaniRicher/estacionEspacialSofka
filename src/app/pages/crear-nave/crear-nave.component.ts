@@ -10,6 +10,7 @@ import { NaveTripulada } from './tipos/nave-tripulada';
 
 //Alertas
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-nave',
@@ -21,7 +22,8 @@ export class CrearNaveComponent implements OnInit {
   miFormulario!: FormGroup;
 
   public naves: any[] = [];
-  public navesGuardadas: any[] = [];
+  public img: string = '';
+
 
   public tipos: any[] = ['Nave de Lanzadera', 'Nave de Luz', 'Nave no Tripulada', 'Nave Tripulada'];
 
@@ -33,7 +35,8 @@ export class CrearNaveComponent implements OnInit {
         private cantidad: number = 0;
 
 
-  constructor( private fb: FormBuilder ) { }
+  constructor( private fb: FormBuilder,
+               private router: Router ) { }
 
   ngOnInit(): void {
 
@@ -44,27 +47,26 @@ export class CrearNaveComponent implements OnInit {
       velocidad: ['12Km/s', [ Validators.required ] ],
       peso: [ 1000, [ Validators.required, Validators.min(0) ] ],
       tipo: [ '', [ Validators.required ] ],
-      cantidad: [ null, [  ] ],
+      
+      cantidad: [ null ],
+      img: [ '' ],
       
     });
-
-    // if( localStorage.getItem( 'Nave de Lanzadera' )) {
-    //   this.navesGuardadas = JSON.parse(localStorage.getItem('Nave de Lanzadera')!);
-    //   this.naves = this.navesGuardadas;
-    // }
     
     
   }
 
   guardarLocalStorage( tipo: string, naves: any) {
+
     localStorage.setItem( tipo , JSON.stringify( naves ) );
+
   }
+
   cargarLocalSorage( tipo:string ) {
 
     this.naves = [];
     if( localStorage.getItem( tipo )) {
       this.naves = JSON.parse(localStorage.getItem( tipo )!);
-      //  = this.navesGuardadas;
     }
 
   }
@@ -136,6 +138,10 @@ export class CrearNaveComponent implements OnInit {
 
   validarCampos( campo: any ) {
     return this.miFormulario.controls[campo].invalid && this.miFormulario.controls[campo].touched
+  }
+
+  irANaves() {
+    this.router.navigate(['estacionSofka']);
   }
 
 }

@@ -1,34 +1,43 @@
 <div class="row m10">
     <div class="col">
         <h2>Mis naves</h2>
+        
         <hr>    
     </div>
 
     <table class="table-responsive">
         <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Potencia</th>
-            <th scope="col">Velocidad</th>
-            <th scope="col">Peso</th>
-            <th scope="col">Tarea</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Acciones</th>
+          <tr class="text-center">
+            <th>#</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Potencia</th>
+            <th>Velocidad</th>
+            <th>Peso</th>
+            <th>Proposito</th>
+            <th>Elimar Nave</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let naves of navesPorDefecto; let i=index">
+          <tr *ngFor="let naves of navesPorDefecto; let i=index" class="text-center">
             <th scope="row">{{ i+1 }}</th>
+            <td> <img src="{{naves.img}}" /></td>
             <td>{{ naves.nombre }}</td>
+            <td>{{ naves.tipo }}</td>
             <td>{{ naves.potencia }} </td>
             <td>{{ naves.velocidad }}</td>
             <td>{{ naves.peso }}</td>
-            <td>{{ naves.tarea }}</td>
-            <td>{{ naves.tipo }}</td>
-            <td> <button class="btn btn-primary" (click)="verAcciones( i )">Ver Acciones</button> </td>
+            <td><button class="btn btn-primary" (click)="verAcciones( i )">Ver Proposito</button></td>
+            <td><button class="btn btn-danger" (click)="eliminarNave( i )"> Eliminar Nave</button></td>
+
           </tr>
           
         </tbody>
       </table>
+      <hr>
+
+      <div class="text-end">
+        <button class="btn btn-warning" (click)="CrearNave()"> Crear Nave </button>
+      </div>
 </div>

@@ -1,4 +1,5 @@
 import { NaveEspacial } from "src/app/models/nave-espacial";
+import Swal from "sweetalert2";
 
 
 export class NaveLuz extends NaveEspacial {
@@ -18,14 +19,18 @@ export class NaveLuz extends NaveEspacial {
         potencia: '100000Km',
         velocidad: 'N/A',
         peso: 2900,
-        tarea: 'Viajar entre galaxias',
-        tipo: 'Nave de Luz'
+        tipo: 'Nave de Luz',
+        img: 'https://img.icons8.com/dusk/64/000000/rocket--v1.png'
 
      }
        return  nave;
    }
 
     viajarAOtraGalaxia() {
-        console.log('Estoy viajando a otra galaxia a la velocidad de la luz');
+        Swal.fire(
+            `Objetivo`,
+            'Estoy viajando a otra galaxia a la velocidad de la luz',
+            'success'
+          )
    }
 }

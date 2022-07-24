@@ -1,4 +1,5 @@
 import { NaveEspacial } from "src/app/models/nave-espacial";
+import Swal from "sweetalert2";
 
 
 export class NaveLanzadera extends NaveEspacial {
@@ -18,14 +19,18 @@ export class NaveLanzadera extends NaveEspacial {
         potencia: '32000Km',
         velocidad: 'N/A',
         peso: 2900,
-        tarea: 'Llevar suministros',
-        tipo: 'Nave de Lanzadera'
+        tipo: 'Nave de Lanzadera',
+        img: 'https://img.icons8.com/external-flaticons-flat-flat-icons/64/000000/external-rocket-achievements-flaticons-flat-flat-icons-2.png'
      }
        return nave;
    }
 
    transportarSatelite() {
-    console.log('LLevando satelite arficial al espacio');
+    Swal.fire(
+        `Objetivo`,
+        'LLevando satelite arficial al espacio',
+        'success'
+      )
    }
    
 
