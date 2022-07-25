@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NaveNoTripulada } from '../crear-nave/tipos/nave-noTripulada';
 import { NaveTripulada } from '../crear-nave/tipos/nave-tripulada';
 import { NaveLanzadera } from '../crear-nave/tipos/nave-lanzadera';
@@ -13,7 +13,10 @@ import { Router } from '@angular/router';
 })
 export class NavesComponent implements OnInit {
 
+  @ViewChild('txtBuscar') txtBuscar!:ElementRef<HTMLInputElement>;
+
   public navesPorDefecto: Nave[] = [];
+  public navesIniciales: Nave[] = [];
   public naves: any[] = [];
 
 
@@ -38,11 +41,13 @@ export class NavesComponent implements OnInit {
     this.navesPorDefecto.push( this.naveTripulada.creandoNave( 'Dragon V2', '9000', '500', 9250, 'Nave Tripulada', '' ) );
     
     this.cargarLocalStorage();
+    this.navesIniciales = this.navesPorDefecto;
   }
 
   cargarLocalStorage() {
 
     this.naves = [];
+
     
 
     this.naves.push(JSON.parse(localStorage.getItem( 'Nave de Lanzadera' ) ! ));
@@ -51,7 +56,7 @@ export class NavesComponent implements OnInit {
     this.naves.push(JSON.parse(localStorage.getItem( 'Nave Tripulada' )! ));
 
 
-    const navesExistentes:any[] = this.naves.filter( el => el !=null );
+    const navesExistentes:any[] = this.naves.filter( el => el != null );
 
     navesExistentes.find( elem => {
       elem.forEach( (data:any) => {
@@ -93,14 +98,30 @@ export class NavesComponent implements OnInit {
   }
 
   CrearNave() {
+
     this.router.navigateByUrl('estacionSofka/crear-nave')
   }
+
   eliminarNave( index: number ) {
 
-    
+    this.navesPorDefecto.splice(index, 1);
 
-    // this.navesPorDefecto.splice(index, 1)
-    // console.log(this.navesPorDefecto);
+  }
+
+  buscar( ) {
+
+    const valor = this.txtBuscar.nativeElement.value;
+
+    if( valor == '') {
+      this.navesPorDefecto = this.navesIniciales;
+    }
+
+    let expresion = new RegExp(`${ valor }.*`, 'i' )
+    let busqueda = this.navesPorDefecto.filter( elem => expresion.test(elem.nombre + elem.tipo + elem.potencia + elem.velocidad + elem.peso) );
+
+    this.navesPorDefecto = busqueda;
+
+    // this.txtBuscar.nativeElement.value = '';
 
   }
 
