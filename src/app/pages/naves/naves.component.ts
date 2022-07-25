@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class NavesComponent implements OnInit {
 
   @ViewChild('txtBuscar') txtBuscar!:ElementRef<HTMLInputElement>;
+  @ViewChild('txtTipo') txtTipo!:ElementRef<HTMLInputElement>;
 
   public tipos: any[] = ['Nave de Lanzadera', 'Nave de Luz', 'Nave no Tripulada', 'Nave Tripulada'];
   public tipo:any[]=[];
@@ -31,6 +32,7 @@ export class NavesComponent implements OnInit {
   constructor( private router: Router ) { }
 
   ngOnInit(): void {
+
     
     this.navesPorDefecto.push( this.nave.creandoNave( 'Saturno V', '10000', '5000', 30000, 'Nave de Lanzadera', '') );
     this.navesPorDefecto.push( this.nave.creandoNave( 'Atlas V', '10000', '58000', 546700, 'Nave de Lanzadera', '') );
@@ -45,6 +47,8 @@ export class NavesComponent implements OnInit {
     
     this.cargarLocalStorage();
     this.navesIniciales = this.navesPorDefecto;
+    this.buscarTipo('none');
+
   }
 
   cargarLocalStorage() {
