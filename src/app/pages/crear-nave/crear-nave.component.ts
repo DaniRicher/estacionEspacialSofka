@@ -45,7 +45,7 @@ export class CrearNaveComponent implements OnInit {
       nombre: ['', [ Validators.required ] ],
       potencia: ['', [ Validators.required ] ],
       velocidad: ['', [ Validators.required ] ],
-      peso: [ null, [ Validators.required, Validators.min(0) ] ],
+      peso: [ 0, [ Validators.required, Validators.min(0) ] ],
       tipo: [ '', [ Validators.required ] ],
 
       cantidad: [ null ],
@@ -89,11 +89,11 @@ export class CrearNaveComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           this.nombre = this.miFormulario.get('nombre')?.value;
-          this.potencia = this.miFormulario.get('potencia')?.value;
-          this.velocidad = this.miFormulario.get('velocidad')?.value;
-          this.peso = this.miFormulario.get('peso')?.value;
-          this.tipo = this.miFormulario.get('tipo')?.value;
-          this.cantidad = this.miFormulario.get('cantidad')?.value;
+      this.potencia = this.miFormulario.get('potencia')?.value;
+      this.velocidad = this.miFormulario.get('velocidad')?.value;
+      this.peso = this.miFormulario.get('peso')?.value;
+      this.tipo = this.miFormulario.get('tipo')?.value;
+      this.cantidad = this.miFormulario.get('cantidad')?.value;
 
       this.GuardarImagen();
       switch ( this.tipo ) {

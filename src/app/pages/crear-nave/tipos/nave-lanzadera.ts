@@ -13,7 +13,6 @@ export class NaveLanzadera extends NaveEspacial {
 
    override creandoNave( nombre: string, potencia:string, velocidad:string, peso:number, tipo:string , img:string ): any {
 
-
     const nave = {
 
         nombre : nombre,
@@ -27,11 +26,13 @@ export class NaveLanzadera extends NaveEspacial {
    }
 
    transportarSatelite() {
+
     Swal.fire(
         `Objetivo`,
         'LLevar satelites arficiales al espacio',
         'info'
-      )
+      );
+
    }
    
 

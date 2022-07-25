@@ -11,19 +11,29 @@
                    (keyup)="buscar()"
                    #txtBuscar>
           </div>
+          <hr>
 
-          <!-- <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (click)="buscar('Nave de Lanzadera')">
-            <label class="form-check-label" for="flexRadioDefault1">
-              Nave de lanzadera
+          <h6>Filtros</h6>
+          <div class="form-check">
+            <input class="form-check-input" #txtTipo value="none" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked (click)="buscarTipo( txtTipo.value )">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Ninguno
             </label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-            <label class="form-check-label" for="flexRadioDefault2">
-              Default checked radio
+          <div class="form-check" *ngFor="let tipo of tipos">
+            <input class="form-check-input" 
+                   type="radio"
+                   [value]="tipo" 
+                   #txtTipo 
+                   name="flexRadioDefault" 
+                   [id]="tipo"
+                   (click)="buscarTipo( txtTipo.value )"
+                   >
+            <label class="form-check-label" [for]="tipo">
+              {{tipo}}
             </label>
-          </div> -->
+          </div> 
+          
       
         <hr>    
     </div>
@@ -39,7 +49,6 @@
             <th>Velocidad</th>
             <th>Peso</th>
             <th>Proposito</th>
-            <!-- <th>Elimar Nave</th> -->
           </tr>
         </thead>
         <tbody>
@@ -52,7 +61,6 @@
             <td>{{ naves.velocidad }} Km/s</td>
             <td>{{ naves.peso }} Kg</td>
             <td><button class="btn btn-primary" (click)="verAcciones( i )">Ver Proposito</button></td>
-            <!-- <td><button class="btn btn-danger" (click)="eliminarNave( i )"> Eliminar Nave</button></td> -->
 
           </tr>
           

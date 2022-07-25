@@ -15,6 +15,9 @@ export class NavesComponent implements OnInit {
 
   @ViewChild('txtBuscar') txtBuscar!:ElementRef<HTMLInputElement>;
 
+  public tipos: any[] = ['Nave de Lanzadera', 'Nave de Luz', 'Nave no Tripulada', 'Nave Tripulada'];
+  public tipo:any[]=[];
+
   public navesPorDefecto: Nave[] = [];
   public navesIniciales: Nave[] = [];
   public naves: any[] = [];
@@ -47,8 +50,6 @@ export class NavesComponent implements OnInit {
   cargarLocalStorage() {
 
     this.naves = [];
-
-    
 
     this.naves.push(JSON.parse(localStorage.getItem( 'Nave de Lanzadera' ) ! ));
     this.naves.push(JSON.parse(localStorage.getItem( 'Nave de Luz' ) ! ));
@@ -108,20 +109,33 @@ export class NavesComponent implements OnInit {
 
   }
 
-  buscar( ) {
+  buscar() {
 
-    const valor = this.txtBuscar.nativeElement.value;
 
-    if( valor == '') {
-      this.navesPorDefecto = this.navesIniciales;
-    }
+    let valor = this.txtBuscar.nativeElement.value;
 
     let expresion = new RegExp(`${ valor }.*`, 'i' )
-    let busqueda = this.navesPorDefecto.filter( elem => expresion.test(elem.nombre + elem.tipo + elem.potencia + elem.velocidad + elem.peso) );
+    let busqueda = this.tipo.filter( elem => expresion.test(elem.nombre + elem.potencia + elem.velocidad + elem.peso) );
 
     this.navesPorDefecto = busqueda;
 
-    // this.txtBuscar.nativeElement.value = '';
+  }
+
+  buscarTipo( termino: any ) {
+
+
+    if( termino === 'none' ) {
+
+      this.tipo = this.navesIniciales;
+      return this.navesPorDefecto = this.navesIniciales;
+
+    }
+
+    this.navesPorDefecto = this.navesIniciales;
+
+    let arr = this.navesPorDefecto.filter( e => e.tipo == termino );
+      this.tipo = arr;
+     return this.navesPorDefecto = arr;
 
   }
 
